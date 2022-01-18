@@ -1,9 +1,10 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Contacts from './components/Contacts/Contacts';
 import axios from "axios"
 import store2 from "store2"
 import { useEffect } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Contacts from './Pages';
 
 function App() {
 
@@ -26,9 +27,14 @@ function App() {
 
 
   return (
-    <div>
-      <Contacts />
+    <div className='container-xxl mx-auto mt-4'>
+      <Routes>
+        <Route path="/" element={<Contacts />} />
+      </Routes>  
     </div>
+  
+
+   
   );
 }
 

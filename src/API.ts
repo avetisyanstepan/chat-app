@@ -3,6 +3,7 @@ import store2 from "store2";
 
 const BASE_URL = "https://api-im.chatdaddy.tech/";
 
+
 const token = store2.get("accessToken", "");
 
 const instance = axios.create({
@@ -21,5 +22,12 @@ export const API = {
             ...params, 
         });
     },
+    post: (url = '', data = {}, params = {}) => {
+        return  instance.post(url, data,  { 
+            ...params, 
+         
+        });
+    },
   
 };
+

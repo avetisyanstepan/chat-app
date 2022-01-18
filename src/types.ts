@@ -9,3 +9,4 @@ export interface ContactProps {
     img?: string
     tags: TagsProps[]
 }
+
