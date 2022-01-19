@@ -37,6 +37,7 @@ const Contacts = () => {
             console.log(error);
         }
     };
+
     
     const getContacts = async (query: string): Promise<void> => {
         setLoading(true);
@@ -137,7 +138,7 @@ const Contacts = () => {
                             >
                                 { contactsData.length > 0 ?
                                     contactsData.map((contact, i) => (
-                                        <Contact contact={contact}  />
+                                        <Contact contact={contact} key={i} />
                                     ))
                                     :
                                     <div>{!loading && <span>Not found...</span>}</div>
