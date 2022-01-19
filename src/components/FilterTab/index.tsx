@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Button, Col } from "react-bootstrap"
 import { BsCheckLg } from "react-icons/bs";
 import { ClipLoader } from "react-spinners"
-import { TagsProps } from "../../types";
+import { ContactProps, TagsProps } from "../../types";
 import { css } from "@emotion/react";
 import { API } from "../../API";
 import { EndPoints } from "../../consts";
@@ -33,7 +33,7 @@ export const FilterTab:React.FC<any> = ({getContacts}) => {
     const [minMessageRiceved, setMinMessageRiceved] = useState<number>(0);
     const [maxMessageRiceved, setMaxMessageRiceved] = useState<number>(0);
     const [messagesQuery, setMessagesQuery] = useState<string[]>([])
-  
+
 
     
     const handleSelectedTags = (value: string) => {
@@ -43,6 +43,7 @@ export const FilterTab:React.FC<any> = ({getContacts}) => {
             setSelectedTags(selectedTags.filter((name:string) => name !== value));
         }
     };
+
     const handleExcludeSelectedTags = (e: any) => {
         if(!excludeTags.includes(e.target.value)) {
             setExcludeTags([...excludeTags,e.target.value]);

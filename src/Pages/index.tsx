@@ -40,9 +40,13 @@ const Contacts = () => {
 
     
     const getContacts = async (query: string): Promise<void> => {
+  
         setLoading(true);
         try {
-            const res = await API.get(EndPoints.Contacts(query));
+            const params = new URLSearchParams(query);
+            const res = await API.get(EndPoints.Contacts, {
+                params
+            });
             setHasMore(true);
             setLoading(false);
             setNextPage(res.data.nextPage);
@@ -55,7 +59,7 @@ const Contacts = () => {
 
     const handleNextPage = async (query:string) => {
         try {
-            const res = await API.get(EndPoints.Contacts(query));
+            const res = await API.get(EndPoints.Contacts);
             setHasMore(true);
             setContactsData( s => [...s,...res.data.contacts]);
         } catch(error) {
@@ -138,7 +142,7 @@ const Contacts = () => {
                             >
                                 { contactsData.length > 0 ?
                                     contactsData.map((contact, i) => (
-                                        <Contact contact={contact} key={i} />
+                                        <Contact contact={contact}  />
                                     ))
                                     :
                                     <div>{!loading && <span>Not found...</span>}</div>
